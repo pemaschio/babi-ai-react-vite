@@ -1,0 +1,149 @@
+{
+  "version": "2.0.0",
+  "generatedAt": "2026-02-07T16:18:20.166Z",
+  "generator": "ForgeAI",
+  "project": {
+    "name": "babi.ai",
+    "stack": "react-vite",
+    "stackLabel": "React + Vite + TypeScript"
+  },
+  "contents": {
+    "checklist": "PROJECT_CHECKLIST.md",
+    "prompt": "PROMPT_TECNICO.md",
+    "readme": "README.md",
+    "docs": [
+      {
+        "type": "technical",
+        "file": "docs/technical.md",
+        "title": "Documentação Técnica"
+      },
+      {
+        "type": "technical",
+        "file": "docs/technical.md",
+        "title": "Documentação Técnica"
+      },
+      {
+        "type": "architecture",
+        "file": "docs/architecture.md",
+        "title": "Arquitetura do Sistema"
+      },
+      {
+        "type": "api",
+        "file": "docs/api.md",
+        "title": "Documentação da API"
+      },
+      {
+        "type": "installation",
+        "file": "docs/installation.md",
+        "title": "Guia de Instalação"
+      },
+      {
+        "type": "styles",
+        "file": "docs/styles.md",
+        "title": "Guia de Estilos"
+      },
+      {
+        "type": "requirements",
+        "file": "docs/requirements.md",
+        "title": "Especificação de Requisitos"
+      },
+      {
+        "type": "user-guide",
+        "file": "docs/user-guide.md",
+        "title": "Guia do Usuário"
+      },
+      {
+        "type": "testing",
+        "file": "docs/testing.md",
+        "title": "Estratégia de Testes"
+      }
+    ],
+    "styles": {
+      "tokens": "styles/design-tokens.json",
+      "lightTheme": "styles/theme-light.css",
+      "darkTheme": "styles/theme-dark.css"
+    },
+    "infrastructure": {
+      "database": {
+        "schema": "infra/database/schema.sql",
+        "seed": "infra/database/seed.sql",
+        "readme": "infra/database/README.md"
+      },
+      "environment": "infra/environment/.env.example"
+    }
+  },
+  "vault": {
+    "count": 5,
+    "items": [
+      {
+        "name": "Eleven labs",
+        "type": "api_key",
+        "environment": "production",
+        "envVarName": "ELEVEN_LABS"
+      },
+      {
+        "name": "Uazapi",
+        "type": "api_key",
+        "environment": "production",
+        "envVarName": "UAZAPI"
+      },
+      {
+        "name": "N8N",
+        "type": "api_key",
+        "environment": "production",
+        "envVarName": "N8N"
+      },
+      {
+        "name": "Supabase_babi",
+        "type": "api_key",
+        "environment": "production",
+        "envVarName": "SUPABASE_BABI"
+      },
+      {
+        "name": "OpenAI",
+        "type": "api_key",
+        "environment": "production",
+        "envVarName": "OPENAI"
+      }
+    ]
+  },
+  "stages": [
+    {
+      "name": "Planejamento",
+      "type": "planning",
+      "order": 1,
+      "status": "pending"
+    },
+    {
+      "name": "Design",
+      "type": "design",
+      "order": 2,
+      "status": "pending"
+    },
+    {
+      "name": "Desenvolvimento",
+      "type": "development",
+      "order": 3,
+      "status": "pending"
+    },
+    {
+      "name": "Testes",
+      "type": "testing",
+      "order": 4,
+      "status": "pending"
+    },
+    {
+      "name": "Deploy",
+      "type": "deploy",
+      "order": 5,
+      "status": "pending"
+    }
+  ],
+  "checklist": [
+    "Leia PROMPT_TECNICO.md primeiro",
+    "Revise todos os documentos em /docs",
+    "Configure banco de dados",
+    "Configure variáveis de ambiente",
+    "Siga o roadmap para desenvolvimento"
+  ]
+}
