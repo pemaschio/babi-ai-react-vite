@@ -1,0 +1,55 @@
+/* Tema Escuro - 07/02/2026 */
+
+:root {
+  /* Cores */
+  --background: #0a0a0a;
+  --foreground: #fafafa;
+  --primary: #3b82f6;
+  --primary-foreground: #000000;
+  --secondary: #a1a1aa;
+  --secondary-foreground: #000000;
+  --accent: #f59e0b;
+  --accent-foreground: #ffffff;
+  --muted: #27272a;
+  --muted-foreground: #a1a1aa;
+  --card: #18181b;
+  --card-foreground: #fafafa;
+  --border: #27272a;
+  --destructive: #dc2626;
+  --success: #16a34a;
+  --warning: #d97706;
+  
+  /* Tipografia */
+  --font-sans: Inter, system-ui, sans-serif;
+  --font-heading: Inter, system-ui, sans-serif;
+  --font-mono: JetBrains Mono, monospace;
+  
+  /* Espaçamentos */
+  --radius: 0.5rem;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+/* Utilitários */
+.bg-background { background-color: var(--background); }
+.bg-card { background-color: var(--card); }
+.bg-primary { background-color: var(--primary); }
+.bg-secondary { background-color: var(--secondary); }
+.bg-accent { background-color: var(--accent); }
+.bg-muted { background-color: var(--muted); }
+
+.text-foreground { color: var(--foreground); }
+.text-muted-foreground { color: var(--muted-foreground); }
+.text-primary { color: var(--primary); }
+
+.border { border-color: var(--border); }
+.rounded { border-radius: var(--radius); }
+
+/*
+ * Gerado pelo ForgeAI
+ * Para customizar, edite as variáveis CSS acima
+ */
