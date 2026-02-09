@@ -63,21 +63,40 @@ export async function sendAudioMessage({ to, audioUrl }: SendAudioOptions) {
 
 export function parseWebhookMessage(body: Record<string, unknown>): WhatsAppWebhookMessage | null {
   try {
-    // Formato UAZAPI webhook - adaptar conforme documentacao real
-    const data = body as Record<string, unknown>;
+    // Formato UAZAPI webhook:
+    // { instance, event, data: { id, from, body, type, timestamp, wasSentByApi, isGroup } }
+    const payload = body as Record<string, unknown>;
 
-    if (!data.message && !data.body) return null;
+    // Filtra mensagens enviadas pela propria API (evita loop infinito)
+    if (payload.wasSentByApi || (payload.data as Record<string, unknown>)?.wasSentByApi) {
+      console.log("[webhook] Ignorando mensagem enviada pela API (wasSentByApi)");
+      return null;
+    }
 
-    const msg = (data.message || data) as Record<string, unknown>;
+    // Filtra mensagens de grupo
+    const dataObj = (payload.data || payload) as Record<string, unknown>;
+    if (dataObj.isGroup || dataObj.isGroupMsg) {
+      console.log("[webhook] Ignorando mensagem de grupo");
+      return null;
+    }
+
+    // UAZAPI envia dados dentro de "data" ou direto na raiz
+    const msg = (payload.data || payload.message || payload) as Record<string, unknown>;
+
+    const from = String(msg.from || payload.from || "");
+    const msgBody = String(msg.body || msg.text || msg.message || msg.conversation || "");
+
+    if (!from || !msgBody) return null;
 
     return {
-      from: String(data.from || msg.from || ""),
-      body: String(msg.body || msg.text || msg.message || ""),
-      type: (String(msg.type || "text")) as WhatsAppWebhookMessage["type"],
-      timestamp: Number(msg.timestamp || Date.now()),
-      messageId: String(msg.id || msg.messageId || ""),
+      from,
+      body: msgBody,
+      type: (String(msg.type || msg.messageType || "text")) as WhatsAppWebhookMessage["type"],
+      timestamp: Number(msg.timestamp || msg.messageTimestamp || Date.now()),
+      messageId: String(msg.id || msg.messageId || msg.key?.toString() || ""),
     };
-  } catch {
+  } catch (err) {
+    console.error("[webhook] Erro ao parsear mensagem:", err);
     return null;
   }
 }

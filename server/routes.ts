@@ -356,13 +356,16 @@ router.put(
 
 router.post("/api/webhook/whatsapp", async (req, res) => {
   try {
+    console.log("[webhook] Payload recebido:", JSON.stringify(req.body, null, 2));
+
     const parsed = parseWebhookMessage(req.body);
 
     if (!parsed || !parsed.body) {
+      console.log("[webhook] Mensagem ignorada (parse retornou null ou body vazio)");
       return res.json({ status: "ignored" });
     }
 
-    console.log(`WhatsApp de ${parsed.from}: ${parsed.body}`);
+    console.log(`[webhook] WhatsApp de ${parsed.from}: ${parsed.body}`);
 
     // Busca ou cria conversa para este numero
     const convos = await storage.getConversationsByPhone(parsed.from);
